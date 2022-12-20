@@ -21,8 +21,8 @@ class Tk{
 }
 
 class Two{
-    #[Value("male")]
-    private string $sex;
+    #[Value(12)]
+    private int $sex;
 
     public function tw():void{
         echo $this->sex;

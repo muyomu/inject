@@ -15,7 +15,5 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-        "muyomu/config": "1.1.4"
-    }
+    "require": {}
 }

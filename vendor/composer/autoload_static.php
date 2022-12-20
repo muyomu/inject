@@ -10,7 +10,6 @@ class ComposerStaticInit2ec50114c85b1cac50dd512afac68f12
         'm' => 
         array (
             'muyomu\\inject\\' => 14,
-            'muyomu\\config\\' => 14,
         ),
     );
 
@@ -18,10 +17,6 @@ class ComposerStaticInit2ec50114c85b1cac50dd512afac68f12
         'muyomu\\inject\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
-        ),
-        'muyomu\\config\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/muyomu/config/src',
         ),
     );
 

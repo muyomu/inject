@@ -25,11 +25,7 @@ class ReflectionTypeStrategy implements InstanceClient
      */
     public function getInstance(mixed $classOrInstance): object
     {
-        if ($this->status == "string"){
-            return $this->getInstanceWithNoInstance($classOrInstance);
-        }else{
-            return $this->getInstanceWithInstance($classOrInstance::class,$classOrInstance);
-        }
+        return $this->getInstanceWithNoInstance($classOrInstance);
     }
 
     /**
