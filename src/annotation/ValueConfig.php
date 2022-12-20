@@ -20,7 +20,7 @@ class ValueConfig
     /**
      * @return string
      */
-    public function getValueConfig(): mixed
+    public function getValue(): mixed
     {
         return $this->configClass;
     }
