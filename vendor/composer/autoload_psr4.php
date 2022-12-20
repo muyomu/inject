@@ -6,5 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Muyomu\\Inject\\' => array($baseDir . '/src'),
+    'muyomu\\inject\\' => array($baseDir . '/src'),
+    'muyomu\\config\\' => array($vendorDir . '/muyomu/config/src'),
 );

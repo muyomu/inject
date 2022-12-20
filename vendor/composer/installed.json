@@ -1,0 +1,46 @@
+{
+    "packages": [
+        {
+            "name": "muyomu/config",
+            "version": "v1.1.4",
+            "version_normalized": "1.1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/muyomu/config.git",
+                "reference": "cc4868bac87038e17b61ed929221cbd679306540"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/muyomu/config/zipball/cc4868bac87038e17b61ed929221cbd679306540",
+                "reference": "cc4868bac87038e17b61ed929221cbd679306540",
+                "shasum": ""
+            },
+            "time": "2022-11-28T09:34:31+00:00",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "muyomu\\config\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "mutian",
+                    "email": "mutian-xiangcai@outlook.com"
+                }
+            ],
+            "description": "The config framework for muyomu web framework",
+            "support": {
+                "issues": "https://github.com/muyomu/config/issues",
+                "source": "https://github.com/muyomu/config/tree/v1.1.4"
+            },
+            "install-path": "../muyomu/config"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
