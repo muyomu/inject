@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
-        'name' => 'muyomu/inject',
+        'name' => 'muyomu/log4p',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '410008d53937edd888d925d42746f4d06a68e486',
+        'reference' => '713e6acd4fc6babeb66fc27a0612e531f21dff46',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -19,21 +19,12 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'muyomu/inject' => array(
+        'muyomu/log4p' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '410008d53937edd888d925d42746f4d06a68e486',
+            'reference' => '713e6acd4fc6babeb66fc27a0612e531f21dff46',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'muyomu/log4p' => array(
-            'pretty_version' => 'v1.1.4',
-            'version' => '1.1.4.0',
-            'reference' => '790f20eaf31f6c9695ab61a67d6cdb2d4ba1a229',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../muyomu/log4p',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

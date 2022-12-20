@@ -7,6 +7,7 @@ use muyomu\inject\annotation\Value;
 use muyomu\inject\client\InstanceClient;
 use ReflectionClass;
 use ReflectionException;
+use ReflectionProperty;
 
 class ReflectionTypeStrategy implements InstanceClient
 {
@@ -25,7 +26,10 @@ class ReflectionTypeStrategy implements InstanceClient
      */
     public function getInstance(mixed $classOrInstance): object
     {
-        return $this->getInstanceWithNoInstance($classOrInstance);
+        if ($this->status == "string")
+            return $this->getInstanceWithNoInstance($classOrInstance);
+        else
+            return $this->getInstanceWithInstance($classOrInstance::class,$classOrInstance);
     }
 
     /**
@@ -33,47 +37,73 @@ class ReflectionTypeStrategy implements InstanceClient
      */
     public function getInstanceWithNoInstance(string $className): object
     {
-        class_exists($className);
-
         $reflectionClass = new ReflectionClass($className);
 
         $reflectionInstance = $reflectionClass->newInstance();
 
+        return $this->extracted($reflectionClass, $reflectionInstance);
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    public function getInstanceWithInstance(string $className,object $instance): object
+    {
+        $reflectionClass = new ReflectionClass($className);
+
+        $reflectionInstance = $instance;
+
+        return $this->extracted($reflectionClass, $reflectionInstance);
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    public function fillProperty(string $className, ReflectionProperty $reflectionProperty, object $instance): void
+    {
+        $object = $this->getInstanceWithNoInstance($className);
+        $reflectionProperty->setValue($instance,$object);
+    }
+
+    /**
+     * @param ReflectionClass $reflectionClass
+     * @param object $reflectionInstance
+     * @return object
+     * @throws ReflectionException
+     */
+    public function extracted(ReflectionClass $reflectionClass, object $reflectionInstance): object
+    {
         $properties = $reflectionClass->getProperties();
 
-        if (!empty($properties)){
+        if (!empty($properties)) {
 
-            foreach ($properties as $property){
+            foreach ($properties as $property) {
+
                 $type = $property->getType()->getName();
+
                 $attributes = $property->getAttributes();
-                if (!in_array($type,array("string","int","bool","flot"))){
+
+                if (!in_array($type, array("string", "int", "bool", "float"))) {
+
                     foreach ($attributes as $attribute) {
                         $attrName = $attribute->getName();
                         if ($attrName == AutoWired::class) {
-                            $value  = $attribute->newInstance()->getValue();
-                            $this->getInstanceWithInstance($value,$property,$reflectionInstance);
+                            $value = $attribute->newInstance()->getValue();
+                            $this->fillProperty($value, $property, $reflectionInstance);
                         }
                     }
-                }else{
-                    foreach ($attributes as $attribute){
+                } else {
+
+                    foreach ($attributes as $attribute) {
                         $attrName = $attribute->getName();
-                        if ($attrName == Value::class){
-                            $value  = $attribute->newInstance()->getValue();
-                            $property->setValue($reflectionInstance,$value);
+                        if ($attrName == Value::class) {
+                            $value = $attribute->newInstance()->getValue();
+                            $property->setValue($reflectionInstance, $value);
                         }
                     }
                 }
             }
         }
         return $reflectionInstance;
-    }
-
-    /**
-     * @throws ReflectionException
-     */
-    public function getInstanceWithInstance(string $className,\ReflectionProperty $reflectionProperty, object $instance): void
-    {
-        $object = $this->getInstanceWithNoInstance($className);
-        $reflectionProperty->setValue($instance,$object);
     }
 }

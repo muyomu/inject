@@ -1,21 +1,21 @@
 {
-    "name": "muyomu/inject",
-    "description": "The auto-wired framework to muyomu web framework",
+    "name": "muyomu/log4p",
+    "description": "The log framework for muyomu web framework",
     "type": "library",
     "license": "apache-2.0",
     "autoload": {
         "psr-4": {
-            "muyomu\\inject\\": "src/"
+            "muyomu\\log4p\\": "src/"
         }
     },
     "authors": [
         {
             "name": "mutian",
-            "email": "bhfqlz@outlook.com"
+            "email": "bhfqlz@qq.com"
         }
     ],
     "minimum-stability": "dev",
     "require": {
-        "muyomu/log4p": "v1.1.4"
+        "muyomu/config": "1.1.4"
     }
 }
