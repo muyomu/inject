@@ -1,8 +1,10 @@
 <?php
 
 namespace muyomu\inject;
+
 use muyomu\inject\client\ProxyClient;
 use muyomu\inject\utility\ReflectionTypeStrategy;
+use ReflectionException;
 
 class Proxy implements ProxyClient
 {
@@ -13,6 +15,9 @@ class Proxy implements ProxyClient
         $this->reflectionTypeStrategy = new ReflectionTypeStrategy();
     }
 
+    /**
+     * @throws ReflectionException
+     */
     public function getProxyInstance(mixed $classOrInstance): object
     {
         $type = gettype($classOrInstance);
